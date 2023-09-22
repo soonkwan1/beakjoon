@@ -7,6 +7,8 @@
 #include <queue>
 #define MOD 1000000007
 using namespace std;
+#define endl "\n"
+
 void INIT() {
 	cin.tie(NULL);
 	cout.tie(NULL);
@@ -34,7 +36,7 @@ void freeMem(int** t, int n) {
 	for (int i = 0; i < n; i++) delete[] t[i];
 	delete[] t;
 }
-void bfs(int** table, int start_x, int start_y, int n) {
+int bfs(int** table, int** valid, int start_x, int start_y, int n) {
 	int dx[4] = { 0, 0, -1, 1 };
 	int dy[4] = { -1, 1, 0, 0 };
 
@@ -46,17 +48,18 @@ void bfs(int** table, int start_x, int start_y, int n) {
 
 	visited[start_x][start_y] = 1;
 
-	deque<pair<pair<int, int>,int>> nodes;
+	deque<pair<pair<int, int>,int> > nodes;
 	nodes.push_back(make_pair(make_pair(start_x, start_y), 0));
 
-	int res = 0;
+	int res = 1000;
 	while (!nodes.empty()) {
 		int x = nodes.front().first.first;
 		int y = nodes.front().first.second;
 		int c = nodes.front().second;
+
 		nodes.pop_front();
 
-		if (table[x][y] == 2) {
+		if (valid[x][y] == 1) {
 			res = c;
 			break;
 		}
@@ -75,26 +78,59 @@ void bfs(int** table, int start_x, int start_y, int n) {
 	}
 
 	freeMem(visited, n);
-	cout << res << endl;
+	return res;
+}
+void dfs(int** table, int** valid, int cnt, vector<pair<int,int> > chickens, vector<pair<int,int> > houses, int n, int m, int start_idx, int* res){
+	if (cnt == m){
+		int chic_dist = 0;
+		for (int i=0; i<houses.size(); i++){
+			chic_dist += bfs(table, valid, houses[i].first, houses[i].second, n);
+			if (chic_dist > *res){
+				break;
+			}
+		}
+		if (chic_dist < *res){
+			*res = chic_dist;
+		}
+		return;
+	}
+
+	for (int i=start_idx; i<chickens.size(); i++){
+		valid[chickens[i].first][chickens[i].second] = 1;
+		dfs(table, valid, cnt+1, chickens, houses, n, m, i+1, res);
+		valid[chickens[i].first][chickens[i].second] = 0;
+	}
 }
 void bj15686() {
 	int n, m; cin >> n >> m;
 	int** table = setMem(n);
 	
-	vector<pair<int, int>> houses;
+	int** valid = new int*[n];
+	for (int i=0; i<n; i++){
+		valid[i] = new int[n];
+		fill_n(valid[i], n, 0);
+	}
+
+	vector<pair<int, int> > houses;
+	vector<pair<int,int> > chickens;
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			if (table[i][j] == 1) {
 				houses.push_back(make_pair(i, j));
 			}
+			else if (table[i][j] == 2){
+				chickens.push_back(make_pair(i,j));
+				valid[i][j] = 0;
+			}
 		}
 	}
 
-	for (int i = 0; i < houses.size(); i++) {
-		bfs(table, houses[i].first, houses[i].second, n);
-	}
+	int res = 1e9;
+	dfs(table, valid, 0, chickens, houses, n, m, 0, &res);
+	cout << res << endl;
 
 	freeMem(table, n);
+	freeMem(valid, n);
 }
 int main() {
 	INIT();
