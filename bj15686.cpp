@@ -120,7 +120,6 @@ void bj15686() {
 			}
 			else if (table[i][j] == 2){
 				chickens.push_back(make_pair(i,j));
-				valid[i][j] = 0;
 			}
 		}
 	}
