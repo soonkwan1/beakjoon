@@ -17,7 +17,13 @@ void INIT(){
 }
 
 void INPUT(){
-
+    long long res = 0;
+    int idx = 5;
+    while (idx--){
+        long long tmp; cin >> tmp;
+        res += tmp;
+    }
+    cout << res << endl;
 }
 
 int main(){
