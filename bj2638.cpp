@@ -126,6 +126,7 @@ void INPUT(){
     int row, col; cin >> row >> col;
     char** table = setMem(row, col);
     int res = 0;
+    
     updateTable(table, row, col);
     while (!isEmptyTable(table, row, col)){
         updateTable(table, row, col);
