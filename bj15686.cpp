@@ -84,11 +84,22 @@ void dfs(int** table, int** valid, int cnt, vector<pair<int,int> > chickens, vec
 	if (cnt == m){
 		int chic_dist = 0;
 		for (int i=0; i<houses.size(); i++){
-			chic_dist += bfs(table, valid, houses[i].first, houses[i].second, n);
-			if (chic_dist > *res){
-				break;
+			int hx = houses[i].first;
+			int hy = houses[i].second;
+			int dist = 999999999;
+
+			for (int j=0; j<chickens.size(); j++){
+				if (valid[chickens[j].first][chickens[j].second] == 0) continue;
+				dist = min(dist, abs(hx - chickens[j].first) + abs(hy - chickens[j].second));
 			}
+			chic_dist += dist;
 		}
+		// for (int i=0; i<houses.size(); i++){
+		// 	chic_dist += bfs(table, valid, houses[i].first, houses[i].second, n);
+		// 	if (chic_dist > *res){
+		// 		break;
+		// 	}
+		// }
 		if (chic_dist < *res){
 			*res = chic_dist;
 		}
