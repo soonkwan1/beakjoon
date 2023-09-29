@@ -92,10 +92,6 @@ int findFish(int** t, int n, int* shark_size, int* eaten, int* ans){
 
     sort(destinations.begin(), destinations.end());
 
-    // for (int i=0; i<destinations.size(); i++){
-    //     cout << destinations[i].first << " " << destinations[i].second << endl;
-    // }
-
     *ans += ret_c;
     *eaten += 1;
     ret_x = destinations[0].first; ret_y = destinations[0].second;
