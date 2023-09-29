@@ -68,6 +68,61 @@ void diffusion(int** t, int row, int col){
     freeMem(diff, row);
 }
 void airConditioner(int** t, int row, int col){
+    vector<pair<int,int> > air_pos;
+    for (int i=0; i<row; i++){
+        if (t[i][0] == -1){
+            air_pos.push_back(make_pair(i, 0));
+            air_pos.push_back(make_pair(i+1, 0));
+            break;
+        }
+    }
+
+
+    // No.1 AirConditioner
+    int prev = 0; int next;
+    for (int i=1; i<col; i++){
+        next = t[air_pos[0].first][i];
+        t[air_pos[0].first][i] = prev;
+        prev = next;
+    }
+    for (int i=air_pos[0].first-1; i>=0; i--){
+        next = t[i][col-1];
+        t[i][col-1] = prev;
+        prev = next;
+    }
+    for (int i=col-2; i>=0; i--){
+        next = t[0][i];
+        t[0][i] = prev;
+        prev = next;
+    }
+    for (int i=1; i<air_pos[0].first; i++){
+        next = t[i][0];
+        t[i][0] = prev;
+        prev = next;
+    }
+
+    // No.2 AirConditioner
+    prev = 0;
+    for (int i=1; i<col; i++){
+        next = t[air_pos[1].first][i];
+        t[air_pos[1].first][i] = prev;
+        prev = next;
+    }
+    for (int i=air_pos[1].first+1; i<row; i++){
+        next = t[i][col-1];
+        t[i][col-1] = prev;
+        prev = next;
+    }
+    for (int i=col-2; i>=0; i--){
+        next = t[row-1][i];
+        t[row-1][i] = prev;
+        prev = next;
+    }
+    for (int i=row-2; i>air_pos[1].first; i--){
+        next = t[i][0];
+        t[i][0] = prev;
+        prev = next;
+    }
 
 }
 void printTable(int** t, int row, int col){
@@ -79,15 +134,25 @@ void printTable(int** t, int row, int col){
         cout << endl;
     }
 }
+int tableTotal(int** t, int row, int col){
+    int res = 0;
+    for (int i=0; i<row; i++){
+        for (int j=0; j<col; j++){
+            if (t[i][j] == -1) continue;
+            res += t[i][j];
+        }
+    }
+    return res;
+}
 void INPUT(){
     int row, col; cin >> row >> col;
     int t; cin >> t;
     int** table = setMem(row, col); 
     while (t--){
         diffusion(table, row, col);
+        airConditioner(table, row, col);
     }
-    
-    // printTable(table, row, col);
+    cout << tableTotal(table, row, col) << endl;
     freeMem(table, row);
 }   
 
