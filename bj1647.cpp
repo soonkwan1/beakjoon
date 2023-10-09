@@ -15,28 +15,6 @@ void INIT(){
     cout.tie(NULL);
     ios_base::sync_with_stdio(false);
 }
-void cycleCheck(vector<int>* graph, bool* visited, int curr, int prev, bool* result){
-    visited[curr] = true;
-
-    for (int i=0; i<graph[curr].size(); i++){
-        int to_node = graph[curr][i];
-
-        if (visited[to_node]){
-            if (to_node != prev) {
-                *result = true;
-                return;
-            }
-            else{
-                continue;
-            }
-        }
-
-        cycleCheck(graph, visited, to_node, curr, result);
-        if (*result == true){
-            return;
-        }
-    }
-}
 int findParent(int x, int* parents){
     if (x == parents[x]){
         return x;
@@ -76,6 +54,7 @@ void INPUT(){
     for (int i=1; i<=v; i++) parents[i] = i;
 
     int ans = 0;
+    int m = 0;
     for (int i=0; i<e; i++){
         int cost = edges.top().first;
         int start = edges.top().second.first;
@@ -85,11 +64,11 @@ void INPUT(){
         if (isValid(start, end, parents)){
             Union(start, end, parents);
             ans += cost;
+            m = max(m, cost);
         }
-
     }
 
-    cout << ans << endl;
+    cout << ans - m << endl;
 
     delete[] parents;
 }
