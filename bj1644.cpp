@@ -69,4 +69,8 @@ int main(){
     INIT();
     INPUT();
     return 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 4f2bf23908abfb19afdccdeac5a29646dc17d603

@@ -17,6 +17,7 @@ void INIT() {
     ios_base::sync_with_stdio(false);
 }
 vector<int> topologySort(vector<int>* graph, int* indegree, int v) {
+<<<<<<< HEAD
     priority_queue<int, vector<int>, greater<int> > q;
     for (int i=1; i<=v; i++) if (indegree[i] == 0) q.push(i);
 
@@ -34,6 +35,28 @@ vector<int> topologySort(vector<int>* graph, int* indegree, int v) {
     }
     cout << endl;
 
+=======
+    queue<int> q;
+
+    vector<int> ans;
+    int node;
+    bool* visited = new bool[v + 1]; fill_n(visited, v + 1, false);
+    for (int i = 0; i < v; i++) {
+        for (int j = 1; j <= v; j++) {
+            if (indegree[j] == 0 && !visited[j]) {
+                visited[j] = true;
+                node = j;
+                break;
+            }
+        }
+
+        cout << node << " ";
+        for (int j = 0; j < graph[node].size(); j++) indegree[graph[node][j]]--;
+    }
+    cout << endl;
+
+    delete[] visited;
+>>>>>>> 4f2bf23908abfb19afdccdeac5a29646dc17d603
     return ans;
 }
 void INPUT() {
@@ -62,4 +85,8 @@ int main() {
 }
 
 // 1, 2, 3, 4, 5, ...
+<<<<<<< HEAD
 // y-1, y+1 로 도착
+=======
+// y-1, y+1 로 도착
+>>>>>>> 4f2bf23908abfb19afdccdeac5a29646dc17d603
