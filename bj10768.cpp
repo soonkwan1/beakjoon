@@ -20,7 +20,10 @@ void INIT(){
     ios_base::sync_with_stdio(false);
 }
 void INPUT(){
-    
+    int month, day; cin >> month >> day;
+    int ans = month * 32 + day;
+    ans < 82 ? cout << "Before" : ans == 82 ? cout << "Special" : cout << "After";
+    cout << endl;
 }
 
 int main(){
