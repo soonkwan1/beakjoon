@@ -1,2 +1,1 @@
-
-        else{
+int(line[line.size()-1]) - 48
