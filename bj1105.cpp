@@ -20,10 +20,15 @@ void INIT(){
     ios_base::sync_with_stdio(false);
 }
 void INPUT(){
-    int n, m; cin >> n >> m;
-    int** A = new int*[n];
-    for (int i=0; i<n; i++){
-        
+    string n1, n2; cin >> n1 >> n2;
+    if (n1.size() != n2.size()) cout << 0 << endl;
+    else{
+        int ans = 0;
+        for (int i=0; i<n1.size(); i++){
+            if (n1[i] != n2[i]) break;
+            if (n1[i] == n2[i] && n1[i] == '8') ans++;
+        }
+        cout << ans << endl;
     }
 }
 

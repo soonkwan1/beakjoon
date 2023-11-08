@@ -6,12 +6,6 @@
 #include <deque>
 #include <queue>
 #include <map>
-#include <set>
-#include <unordered_map>
-#include <unordered_set>
-#define endl "\n"
-#define ll long long
-#define fse(A,B,C) for (int i=A; i<B; i+=C)
 using namespace std;
 
 void INIT(){
@@ -19,12 +13,18 @@ void INIT(){
     cout.tie(NULL);
     ios_base::sync_with_stdio(false);
 }
+
 void INPUT(){
-    int n, m; cin >> n >> m;
-    int** A = new int*[n];
-    for (int i=0; i<n; i++){
-        
+    string line; cin >> line;
+    map<int, int> list;
+    for (int i=0; i<line.size(); i++){
+        list[int(line[i]) - 97]++;
     }
+
+    for (int i=0; i<26; i++){
+        cout << list[i] << " ";
+    }
+    cout << endl;
 }
 
 int main(){
