@@ -33,18 +33,21 @@ int isPrime(int n){
 int* eratostenes(int n){
     int* era = new int[n+1];
     fill_n(era, n+1, 1);
-    vector<int> tos;
+    // vector<int> tos;
     era[0] = era[1] = 0;
     for (int i=2; i<=n; i++){
         if (era[i] == 0) continue;
 
-        if (isPrime(i)){
-            tos.push_back(i);
-
-            for (int j=i*2; j<=n; j+=i){
-                era[j] = 0;
-            }
+        for (int j=i*2; j<=n; j+=i){
+            era[j] = 0;
         }
+        // if (isPrime(i)){
+        //     // tos.push_back(i);
+
+        //     for (int j=i*2; j<=n; j+=i){
+        //         era[j] = 0;
+        //     }
+        // }
     }
     
     return era;
@@ -67,17 +70,36 @@ void INPUT(){
 
     int ans = 0;
     
-    vector<int> prime_list;
-    for (int i=1; i<=e; i++){
-        if (era[i]) prime_list.push_back(i);
-    }
-
-    for (int i=s; i<=e; i++){
-        if (era[getSize(prime_list, i)]){
-            ans++;
+    int* dp = new int[e+1];
+    dp[0] = 0; dp[1] = 0;
+    for (int i=2; i<=e; i++){
+        if (era[i]) dp[i] = 1;
+        else{
+            for (int j=2; j<=sqrt(i); j++){
+                if (i % j == 0){
+                    dp[i] = dp[j] + dp[i / j];
+                    break;
+                }
+            }
         }
     }
 
+    for (int i=s; i<=e; i++){   
+        ans += era[dp[i]];
+    }
+
+    // vector<int> prime_list;
+    // for (int i=1; i<=e; i++){
+    //     if (era[i]) prime_list.push_back(i);
+    // }
+
+    // for (int i=s; i<=e; i++){
+    //     if (era[getSize(prime_list, i)]){
+    //         ans++;
+    //     }
+    // }
+    delete[] dp;
+    delete[] era;
     cout << ans << endl;
 }
 
