@@ -43,7 +43,7 @@ void INPUT(){
             cout << -1 << endl;
             delete[] linked;
             return;
-        }
+        }   
 
         for (int i=0; i<crane.size(); i++){
             if (i == crane.size() - 1){
