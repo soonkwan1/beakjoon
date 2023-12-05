@@ -18,6 +18,7 @@ void INIT(){
     cout.tie(NULL);
     ios_base::sync_with_stdio(false);
 }
+/*
 void INPUT(){
     vector<pair<ll,ll> > m;
     int n; cin >> n;
@@ -52,6 +53,35 @@ void INPUT(){
     ans += m[0].first * m[1].first * m[1].second;
 
     cout << ans << endl;
+}
+*/
+
+void INPUT(){
+    int n; cin >> n;
+    vector<pair<ll, ll> > m;
+    for (int i=0; i<n; i++){
+        ll a, b; cin >> a >> b;
+        m.push_back(make_pair(a,b));
+    }
+
+    ll** dp = new ll*[n];
+    for (int i=0; i<n; i++) {
+        dp[i] = new ll[n];
+        fill_n(dp[i], n, 0);
+    }
+
+    for (int i=1; i<n; i++){
+        for (int j=0; j<n; j++){
+            for (int k=j+1; k<j+i; k++){
+                
+            }            
+        }
+    }
+
+
+    for (int i=0; i<n; i++) delete[] dp[i];
+    delete[] dp;
+
 }
 
 int main(){
