@@ -71,13 +71,34 @@ void INPUT(){
     }
 
     for (int i=1; i<n; i++){
-        for (int j=0; j<n; j++){
-            for (int k=j+1; k<j+i; k++){
+        for (int j=0; i + j < n; j++){
+            // if (i == 1){
+            //     dp[j][j+i] = m[j].first * m[i+j].first * m[i+j].second;
+            // }
+            // else if (i==2){
+            //     dp[j][j+i] = min(dp[j][j+i-1] + m[j].first * m[j+i].first * m[j+i].second
+            //     , dp[j+1][j+i] + m[j].first * m[j].second * m[j+i].second);
+            // }
+            // else{
                 
-            }            
+            // }
+            dp[j][j+i] = int(1e9);
+
+            for (int k=j; k<j+i; k++){
+                dp[j][j+i] = min(dp[j][j+i], 
+                dp[j][k] + dp[k+1][j+i] + m[j].first * m[k].second * m[j+i].second);
+            }
         }
     }
 
+    // for (int i=0; i<n; i++){
+    //     for (int j=0; j<n; j++){
+    //         cout << dp[i][j] << " ";
+    //     }
+    //     cout << endl;
+    // }
+
+    cout << dp[0][n-1] << endl;
 
     for (int i=0; i<n; i++) delete[] dp[i];
     delete[] dp;
