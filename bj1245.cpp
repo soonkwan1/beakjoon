@@ -43,6 +43,7 @@ void bfs(int** table, int n, int m){
 
             if (nx >= 0 && nx < n && ny >= 0 && ny < m && !visited[nx][ny]){
                 visited[nx][ny] = true;
+                
             }
         }
     }
