@@ -15,26 +15,22 @@
 using namespace std;
 
 void INPUT(){
-    int** l = new int*[1000];
-    for (int i=0; i<1000; i++){
-        l[i] = new int[2];
+    int n, m, k; cin >> n >> m >> k;
+    int team = 0;
+    while (m >= 1 && n >= 2){
+        team++;
+        m--;
+        n -= 2;
     }
 
-    int k = 0;
-    while (true){
-        int a, b; cin >> a >> b;
-        getchar();
-        if (cin.eof()) break;
-        l[k][0] = a, l[k][1] = b;
-        k++;
+    k -= n + m;
+
+    while (team > 0 && k > 0){
+        team--;
+        k -= 3;
     }
 
-    for (int i=0; i<k; i++){
-        cout << l[k][0] << " " << l[k][1] << endl;
-    }
-
-    for (int i=0; i<1000; i++) delete[] l[i];
-    delete[] l;
+    cout << team << endl;
 }
 
 int main(){
