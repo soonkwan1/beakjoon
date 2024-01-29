@@ -36,7 +36,7 @@ void INPUT(){
     string n_word = makePal(word);
 
     while (n_word <= word){
-
+        
     }
     cout << n_word << endl;
 }
