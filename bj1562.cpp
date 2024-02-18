@@ -16,49 +16,45 @@ using namespace std;
 #define MOD 1000000000
 
 int n;
-int** dp;
-void dfs(int cur, int hist, int k){
-    // cout << cur << " " << hist << endl;
-    if (k == n){
-        if (hist == (1 << 10) - 1){
-            // cout << "hit" << endl;
-            dp[cur][hist] = (dp[cur][hist] + 1) % MOD;
-        }
-        return;
-    }
+int*** dp;
 
-    int up_node = cur + 1;
-    int dn_node = cur - 1;
-    if (dn_node >= 0){
-        dfs(dn_node, hist | (1 << dn_node), k + 1);
-    }
-    if (up_node < 10){
-        dfs(up_node, hist | (1 << up_node), k + 1);
-    }
-}
 void setMem(){
-    dp = new int*[10];
+    dp = new int**[10];
     for (int i=0; i<10; i++){
-        dp[i] = new int[(1 << 10)];
-        fill_n(dp[i], 1 << 11, 0);
+        dp[i] = new int*[101];
+        for (int j=0;j <101; j++){
+            dp[i][j] = new int[1 << 10];
+            fill_n(dp[i][j], 1 << 10, 0);
+        }
     }
 }
 void freeMem(){
-    for (int i=0; i<10; i++) delete[] dp[i];
-    delete dp;
+    for (int i=0; i<10; i++){
+        for (int j=0; j<101; j++){
+            delete[] dp[i][j];
+        }
+        delete[] dp[i];
+    }
+    delete[] dp;
+}
+void SOLUTION(){
+    for (int i=1; i<=9; i++){
+        dp[i][1][1 << i]++;
+    }
+
+    for (int i=2; i<=100; i++){
+        for (int j=0; j<10; j++){
+            for (int k=0; k<1<<10; k++){
+                
+            }
+            // d[j][i]
+        }
+    }
 }
 void INPUT(){
     cin >> n;
     setMem();
-    for (int i=1; i<=9; i++){
-        dfs(i, (1 << i), 1);
-    }
 
-    ll answer = 0;
-    for (int i=0; i<10; i++){
-        answer += dp[i][(1 << 10) - 1];
-    }
-    cout << answer << endl;
     freeMem();
 }
 
@@ -67,3 +63,26 @@ int main(){
     INPUT();
     return 0;
 }
+
+
+/*
+// void dfs(int cur, int hist, int k){
+//     // cout << cur << " " << hist << endl;
+//     if (k == n){
+//         if (hist == (1 << 10) - 1){
+//             // cout << "hit" << endl;
+//             dp[cur][hist] = (dp[cur][hist] + 1) % MOD;
+//         }
+//         return;
+//     }
+
+//     int up_node = cur + 1;
+//     int dn_node = cur - 1;
+//     if (dn_node >= 0){
+//         dfs(dn_node, hist | (1 << dn_node), k + 1);
+//     }
+//     if (up_node < 10){
+//         dfs(up_node, hist | (1 << up_node), k + 1);
+//     }
+// }
+*/
