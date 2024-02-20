@@ -17,9 +17,12 @@ using namespace std;
 void INPUT(){
     
 }
+void SOLUTION(){
 
+}
 int main(){
     fastio;
     INPUT();
+    SOLUTION();
     return 0;
 }
