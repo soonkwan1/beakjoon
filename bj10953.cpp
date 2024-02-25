@@ -22,7 +22,7 @@ void INPUT(){
     }
 }
 void SOLUTION(){
-
+    
 }
 int main(){
     fastio;
