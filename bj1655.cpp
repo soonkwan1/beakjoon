@@ -14,41 +14,33 @@
 #define fastio cin.tie(NULL), cout.tie(NULL), ios_base::sync_with_stdio(false);
 using namespace std;
 
-vector<int> pq;
+void INPUT(){
+    priority_queue<int, vector<int>, greater<int> > uppq;
+    priority_queue<int> downpq;
+    vector<int> ans;
 
-void push(int c){
-    pq.push_back(c);
-    if (pq.size() == 2){
-        return;
-    }
-    
-    int idx = pq.size() - 1;
-    int parent = 0, child = 0;
-    while (idx >= 1){
-        child = idx;
-        parent = idx / 2;
-        if (pq[child] < pq[parent]){
-            swap(pq[child], pq[parent]);
-            idx = parent;
+    int n; cin >> n;
+    while(n--){
+        int tmp; cin >> tmp;
+        if (uppq.size() == downpq.size()){
+            downpq.push(tmp);
+            if (uppq.size() >= 1 && uppq.top() < downpq.top()){
+                int t1 = uppq.top(); uppq.pop();
+                int t2 = downpq.top(); downpq.pop();
+                downpq.push(t1); uppq.push(t2);
+            }
         }
         else{
-            break;
+            uppq.push(tmp);
+            if (uppq.top() < downpq.top()){
+                int t1 = uppq.top(); uppq.pop();
+                int t2 = downpq.top(); downpq.pop();
+                downpq.push(t1); uppq.push(t2);
+            }
         }
+        ans.push_back(downpq.top());
     }
-}
-
-void INPUT(){
-    int n; cin >> n;
-    vector<int> ans;
-    while (n--){
-        int tmp; cin >> tmp;
-        push(tmp);
-        ans.push_back(pq[(pq.size() + 1) / 2 - 1]);
-    }
-    for (int i=0; i<ans.size(); i++){
-        cout << ans[i] << endl;
-    }
-    
+    for (int i=0; i<ans.size(); i++) cout << ans[i] << endl;
 }
 
 int main(){
