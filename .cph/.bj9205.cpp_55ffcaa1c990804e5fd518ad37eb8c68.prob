@@ -1,0 +1,1 @@
+{"name":"Local: bj9205","url":"/Users/soonkwan/soonkwan/coding_practice/bj9205.cpp","tests":[{"id":1709732715389,"input":"2\n2\n0 0\n1000 0\n1000 1000\n2000 1000\n2\n0 0\n1000 0\n2000 1000\n2000 2000","output":"happy\nsad"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj9205.cpp","group":"local","local":true}

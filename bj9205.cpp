@@ -13,46 +13,50 @@
 #define fastio cin.tie(NULL), cout.tie(NULL), ios_base::sync_with_stdio(false);
 using namespace std;
 
-void SOLUTION() {
 
-}
-bool** getVisit(int n) {
-    bool** tmp = new bool* [n];
-    for (int i = 0; i < n; i++) {
-        tmp[i] = new bool[n];
-        fill_n(tmp[i], n, false);
-    }
-    return tmp;
-}
-void freeVisit(bool** t, int n) {
-    for (int i = 0; i < n; i++) delete[] t[i];
-    delete[] t;
-}
-void bfs(vector<int>* graph, vector<pair<int,int>> v, int n) {
-    int start_x = v[0].first, start_y = v[0].second;
-    deque<pair<int, int>> dq;
-    dq.push_back(make_pair(v[0].first, v[0].second));
+void bfs(vector<int>* graph, int n) {
+    deque<int> dq;
+    dq.push_front(0);
 
-    bool** visited = getVisit(n);
-    visited[start_x][start_y] = true;
+    bool* visited = new bool[n + 2];
+    fill_n(visited, n + 2, false);
+    visited[0] = true;
 
+    int ans = 0;
     while (!dq.empty()) {
+        int node = dq.front();
+        dq.pop_front();
 
+        if (node == n + 1){
+            ans = 1;
+            break;
+        }
+
+        for (int i=0; i<graph[node].size(); i++){
+            int to_node = graph[node][i];
+            if (!visited[to_node]){
+                visited[to_node] = true;
+                dq.push_back(to_node);
+            }
+        }
     }
 
-    freeVisit(visited, n);
+    if (ans == 1) cout << "happy" << endl;
+    else cout << "sad" << endl;
+
+    delete[] visited;
 }
 void INPUT() {
     int t; cin >> t;
     while (t--) {
         int n; cin >> n;
-        vector<pair<int, int>> v;
+        vector<pair<int, int> > v;
         for (int i = 0; i < n + 2; i++) {
             int s, e; cin >> s >> e;
             v.push_back(make_pair(s, e));
         }
 
-        vector<int>* graph = new vector<int>[n];
+        vector<int>* graph = new vector<int>[n + 2];
         for (int i = 0; i < n + 2; i++) {
             for (int j = 0; j < n + 2; j++) {
                 if (i == j) continue;
@@ -62,9 +66,9 @@ void INPUT() {
             }
         }
 
+        bfs(graph, n);
 
         delete[] graph;
-
     }
 }
 
@@ -72,6 +76,5 @@ void INPUT() {
 int main() {
     fastio;
     INPUT();
-    // SOLUTION();
     return 0;
 }
