@@ -1,0 +1,1 @@
+{"name":"Local: bj2740","url":"/Users/soonkwan/soonkwan/coding_practice/bj2740.cpp","tests":[{"id":1710412529756,"input":"3 2\n1 2\n3 4\n5 6\n2 3\n-1 -2 0\n0 0 3","output":"-1 -2 6\n-3 -6 12\n-5 -10 18"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj2740.cpp","group":"local","local":true}
