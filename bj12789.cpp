@@ -28,13 +28,26 @@ void SOLUTION(){
 
     int cnt = 1;
     while (true){
-        if (!main_line.empty() && main_line.back() == cnt){
-            
+        if (!main_line.empty() && main_line.front() == cnt){
+            main_line.pop_front();
+            cnt++;
         }
         else if (!sub_line.empty() && sub_line.back() == cnt){
-
+            sub_line.pop_back();
+            cnt++;
+        }
+        else if (main_line.empty()){
+            break;
+        }
+        else{
+            int tmp = main_line.front();
+            main_line.pop_front();
+            sub_line.push_back(tmp);
         }
     }
+    
+    if (cnt == n + 1) cout << "Nice" << endl;
+    else cout << "Sad" << endl;
 }
 int main(){
     fastio;
