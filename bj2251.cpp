@@ -56,6 +56,7 @@ void bfs(){
 
         if (ix){
             int nx = ix - (b - iy);
+            
         }
 
         if (iy){
