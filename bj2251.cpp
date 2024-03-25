@@ -39,6 +39,25 @@ void freeVisit(){
     }
     delete[] visited;
 }
+pair<int,int> getPour(int n, int m, int mx){
+    // n : 비우려는 통의 현재 양
+    // m : 채우려는 통의 현재 양
+    // mx : 채우려는 통의 max치
+
+    if (n == 0) return make_pair(n, m);
+    else if (m == mx) return make_pair(n, m);
+    
+    int t1 = n + m >= mx ? n - (mx - m) : 0;
+    int t2 = n + m >= mx ? mx : n + m;
+    return make_pair(t1, t2);
+}
+bool getCheck(int x, int y, int z){
+    if (visited[x][y][z]){
+        return false;
+    }
+    visited[x][y][z] = true;
+    return true;
+}
 void bfs(){
     deque<Node> dq;
     Node start; start.x = 0, start.y = 0, start.z = c;
@@ -51,58 +70,46 @@ void bfs(){
         int ix = dq.front().x;
         int iy = dq.front().y;
         int iz = dq.front().z;
-        ans[iz] = true;
+        
+        if (ix == 0) ans[iz] = 1;
+        
         dq.pop_front();
 
-        if (ix){
-            int nx = ix - (b - iy);
-            
+        Node n_node;
+        // Pour x
+        pair<int,int> px1 = getPour(ix, iy, b);
+        if (getCheck(px1.first, px1.second, iz)) {
+            n_node.x = px1.first, n_node.y = px1.second, n_node.z = iz;
+            dq.push_back(n_node);
+        }
+        pair<int,int> px2 = getPour(ix, iz, c);
+        if (getCheck(px2.first, iy, px2.second)) {
+            n_node.x = px2.first, n_node.y = iy, n_node.z = px2.second;
+            dq.push_back(n_node);
         }
 
-        if (iy){
-            if (ix < a){
-                int nx = ix + iy >= a ? a : ix + iy;
-                int ny = iy - nx;
-                int nz = iz;
-                if (!visited[nx][ny][nz]){
-                    visited[nx][ny][nz] = true;
-                    Node n_node; n_node.x = nx, n_node.y = ny, n_node.z = nz;
-                    dq.push_back(n_node);
-                }
-            }
-            if (iz < c){
-                int nx = ix;
-                int nz = iz + iy >= c ? c : iz + iy;
-                int ny = iy - nz;
-                if (!visited[nx][ny][nz]){
-                    visited[nx][ny][nz] = true;
-                    Node n_node; n_node.x = nx, n_node.y = ny, n_node.z = nz;
-                    dq.push_back(n_node);
-                }
-            }
+        // Pour y
+        pair<int,int> py1 = getPour(iy, ix, a);
+        if (getCheck(py1.second, py1.first, iz)) {
+            n_node.x = py1.second, n_node.y = py1.first, n_node.z = iz;
+            dq.push_back(n_node);
+        }
+        pair<int,int> py2 = getPour(iy, iz, c);
+        if (getCheck(ix, py2.first, py2.second)) {
+            n_node.x = ix, n_node.y = py2.first, n_node.z = py2.second;
+            dq.push_back(n_node);
         }
 
-        if (iz){    
-            if (ix < a){
-                int nx = ix + iz >= a ? a : ix + iz;
-                int ny = iy;
-                int nz = iz = nx;
-                if (!visited[nx][ny][nz]){
-                    visited[nx][ny][nz] = true;
-                    Node n_node; n_node.x = nx, n_node.y = ny, n_node.z = nz;
-                    dq.push_back(n_node);
-                }
-            }
-            if (iy < b){
-                int nx = ix;
-                int ny = iy + iz >= b ? b : iy + iz;
-                int nz = iz = ny;
-                if (!visited[nx][ny][nz]){
-                    visited[nx][ny][nz] = true;
-                    Node n_node; n_node.x = nx, n_node.y = ny, n_node.z = nz;
-                    dq.push_back(n_node);
-                }
-            }
+        // Pour z
+        pair<int,int> pz1 = getPour(iz, ix, a);
+        if (getCheck(pz1.second, iy, pz1.first)) {
+            n_node.x = pz1.second, n_node.y = iy, n_node.z = pz1.first;
+            dq.push_back(n_node);
+        }
+        pair<int,int> pz2 = getPour(iz, iy, b);
+        if (getCheck(ix, pz2.second, pz2.first)) {
+            n_node.x = ix, n_node.y = pz2.second, n_node.z = pz2.first;
+            dq.push_back(n_node);
         }
     }
 }
@@ -112,7 +119,7 @@ void INPUT(){
     ans = new bool[c+1]; fill_n(ans, c+1, 0);
 
     bfs();
-    for (int i=1; i<=c; i++){
+    for (int i=0; i<=c; i++){
         if (ans[i]) cout << i << " ";
     }
     cout << endl;
