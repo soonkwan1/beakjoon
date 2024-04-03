@@ -1,0 +1,1 @@
+{"name":"Local: bj4030","url":"/Users/soonkwan/soonkwan/coding_practice/bj4030.cpp","tests":[{"id":1712150753729,"input":"15 17\n14 16\n1 20\n0 0","output":"Case 1: 1\nCase 2: 0\nCase 3: 2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj4030.cpp","group":"local","local":true}
