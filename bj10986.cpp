@@ -16,32 +16,30 @@ using namespace std;
 
 void INPUT(){
     int n, m; cin >> n >> m;
-    int* num_list = new int[n];
+    ll* num_list = new ll[n];
+    ll* dp = new ll[n + 1]; dp[0] = 0;
+    ll* ans = new ll[m];
 
     for (int i=0; i<n; i++){
         cin >> num_list[i];
+        dp[i+1] = dp[i] + num_list[i];
+        ans[dp[i+1] % m]++;
     }
 
-    ll ans = 0;
-    for (int k=1; k<=n; k++){
-        ll s = 0;
-        for (int i=0; i<k; i++){
-            s += num_list[i];
-        }
+    // for (int i=0; i<m; i++){
+    //     cout << ans[i] << " ";
+    // }
+    // cout << endl;
 
-        int start = 0, end = k-1;
-        while (true){
-            if (s % m == 0) ans++;
-            
-            end++;
-            if (end == n) break;
-            s -= num_list[start]; 
-            start++;
-            s += num_list[end];
-        }
+    ll ret = ans[0];
+    for (int i=0; i<m; i++){
+        if (ans[i] == 0 || ans[i] == 1) continue; 
+        ret += (ans[i] * (ans[i] - 1)) / 2;
     }
-    cout << ans << endl;
+    cout << ret << endl;
 
+    delete[] ans;
+    delete[] dp;
     delete[] num_list;
 }
 void SOLUTION(){
