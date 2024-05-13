@@ -1,0 +1,1 @@
+{"name":"Local: bj5361","url":"/Users/soonkwan/soonkwan/coding_practice/bj5361.cpp","tests":[{"id":1715600776151,"input":"3\n20 10 14 3 9\n19 17 12 8 10\n11 9 8 22 33","output":"$13987.50\n$15679.76\n$16182.54"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj5361.cpp","group":"local","local":true}
