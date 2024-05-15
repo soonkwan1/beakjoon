@@ -1,9 +1,2 @@
-for (ll i=mn; i<=mx; i++){
-    //     if (!num[i - mn]) continue;
-    //     else sqCheck(i);
-    // }
-    // int ans = 0;
-    // for (ll i=mn; i<=mx; i++){
-    //     ans += num[i - mn];
-    // }
-    // cout << ans << endl;
+for (int i=1; i<=30; i++) cout << dp[i] << " ";
+    cout << endl;
