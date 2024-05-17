@@ -1,0 +1,1 @@
+{"name":"Local: bj10179","url":"/Users/soonkwan/soonkwan/coding_practice/bj10179.cpp","tests":[{"id":1715948501164,"input":"3\n100.00\n59.99\n20.00","output":"$80.00\n$47.99\n$16.00"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj10179.cpp","group":"local","local":true}
