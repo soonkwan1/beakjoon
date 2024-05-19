@@ -24,7 +24,7 @@ void INPUT(){
 
         dp[i] = 2 * dp[2] * dp[i - 2];
     }
-    
+
     cout << dp[n] << endl;
 }
 void SOLUTION(){
