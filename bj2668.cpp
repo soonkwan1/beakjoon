@@ -15,17 +15,7 @@
 using namespace std;
 
 void INPUT(){
-    ll n; cin >> n;
-    ll dp[31]; fill_n(dp, 31, 0);
-    dp[2] = 3; dp[4] = 11;
-
-    for (int i=5; i<=n; i++){
-        if (i % 2 == 1) continue;
-
-        dp[i] = 2 * dp[2] * dp[i - 2];
-    }
-
-    cout << dp[n] << endl;
+    int n; cin >> n;
 }
 void SOLUTION(){
     
