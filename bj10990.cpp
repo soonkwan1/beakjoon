@@ -21,6 +21,7 @@ void printTable(){
         int flag = 0;
         for (int j=0; j<(2 * n -1); j++){
             if (flag == 2) break;
+            
             cout << table[i][j];
             if (i==0 && j == n-1) break;
 
