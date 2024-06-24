@@ -1,0 +1,1 @@
+{"name":"Local: bj9550","url":"/Users/soonkwan/soonkwan/coding_practice/bj9550.cpp","tests":[{"id":1719231624600,"input":"2\n3 2\n4 5 7\n3 8\n4 5 7","output":"7\n0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj9550.cpp","group":"local","local":true}
