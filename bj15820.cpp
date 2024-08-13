@@ -23,7 +23,7 @@ void INPUT(){
     }
     for (int i=0; i<s2; i++){
         int t1, t2; cin >> t1 >> t2;
-        if (t1 != t2) state = 2;
+        if (t1 != t2 && state != 1) state = 2;
     }
     if (state == 0) cout << "Accepted" << endl;
     else if (state == 1) cout << "Wrong Answer" << endl;
