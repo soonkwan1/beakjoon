@@ -14,16 +14,21 @@
 #define fastio cin.tie(NULL), cout.tie(NULL), ios_base::sync_with_stdio(false);
 using namespace std;
 
-void INPUT(){   
-    int t; cin >> t;
-    while (t--){
-        int a, b; cin >> a >> b;
-        int tmp;
-        if (a % b == 0) tmp = a / b;
-        else tmp = a / b + 1;
+void INPUT(){
+    int a, b; cin >> a >> b;
+    int k, x; cin >> k >> x;
+    int low_limit = k - x;
+    int high_limit = k + x;
 
-        cout << tmp * (tmp + 1) / 2 + tmp * (tmp - 1) / 2 << endl;
+    if (high_limit < a || low_limit > b) {
+        cout << "IMPOSSIBLE" << endl;
+        return;
     }
+    else{
+        if (low_limit < a) low_limit = a;
+        if (high_limit > b) high_limit = b;
+    }
+    cout << high_limit - low_limit + 1 << endl;
 }
 void SOLUTION(){
     
