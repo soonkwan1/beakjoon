@@ -1,0 +1,1 @@
+{"name":"Local: bj4619","url":"/Users/soonkwan/soonkwan/coding_practice/bj4619.cpp","tests":[{"id":1725367170797,"input":"4 3\n5 3\n27 3\n750 5\n1000 5\n2000 5\n3000 5\n1000000 5\n0 0","output":"1\n2\n3\n4\n4\n4\n5\n16"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj4619.cpp","group":"local","local":true}
