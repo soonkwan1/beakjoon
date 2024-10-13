@@ -19,37 +19,25 @@ struct compMin{
         return a > b;
     }
 };
+void dfs(string num, vector<string> sub, int n, int& ans){
+    int tmp = stoi(num);
+    if (tmp > n) return;
+    ans = max(ans, tmp);
+
+    for (int i=0; i<sub.size(); i++){
+        dfs(num + sub[i], sub, n, ans);
+    }
+}
 void INPUT(){
     int n, k; cin >> n >> k;
-    vector<int> sub(k);
+    vector<string> sub(k);
     for (int i=0; i<k; i++) cin >> sub[i];
 
-    deque<int> num;
-    while (n){
-        num.push_front(n % 10);
-        n /= 10;
+    int ans = -1;
+    for (int i=0; i<sub.size(); i++){
+        dfs(sub[i], sub, n, ans);
     }
-
-    sort(sub.begin(), sub.end(), compMin());
-
-    vector<int> ans(num.size());
-    for (int i=0; i<ans.size(); i++) ans[i] = -1;
-
-    for (int i=0; i<num.size(); i++){
-        for (int j=0; j<sub.size(); j++){
-            if (num[i] >= sub[j]){
-                ans[i] = j;
-                break;
-            }
-        }
-
-
-    }
-    
-    for (int i=0; i<ans.size(); i++){
-        // if (ans[i] == -1) continue;
-        cout << ans[i] << " ";
-    }
+    cout << ans << endl;
 }
 void SOLUTION(){
     
