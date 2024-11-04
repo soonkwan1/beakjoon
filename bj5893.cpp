@@ -17,6 +17,7 @@ using namespace std;
 void INPUT(){
     string num; cin >> num;
     string mul = "10001";
+    
 }
 void SOLUTION(){
     
