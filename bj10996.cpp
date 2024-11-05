@@ -52,6 +52,5 @@ void INPUT(){
 int main(){
     fastio;
     INPUT();
-    SOLUTION();
     return 0;
 }
