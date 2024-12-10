@@ -15,10 +15,10 @@
 using namespace std;
 
 void INPUT(){
-    
+
 }
 void SOLUTION(){
-    
+
 }
 int main(){
     fastio;
