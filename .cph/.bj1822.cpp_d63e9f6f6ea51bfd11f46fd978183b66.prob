@@ -1,0 +1,1 @@
+{"name":"Local: bj1822","url":"/Users/soonkwan/soonkwan/coding_practice/bj1822.cpp","tests":[{"id":1734270419122,"input":"4 3\n2 5 11 7\n9 7 4","output":"3\n2 5 11"},{"id":1734270436575,"input":"3 5\n2 5 4\n1 2 3 4 5","output":"0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj1822.cpp","group":"local","local":true}
