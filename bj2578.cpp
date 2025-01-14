@@ -20,17 +20,15 @@ typedef struct Node{
 
 int checkBingo(bool** t){
     int cnt = 0;
-    bool flag3 = true;
-    bool flag4 = true;
+    bool flag3 = true; bool flag4 = true;
     for (int i=0; i<5; i++){
-        bool flag1 = true;
-        bool flag2 = true;
+        bool flag1 = true; bool flag2 = true;
         for (int j=0; j<5; j++){
             if (!t[i][j]) flag1 = false;
             if (!t[j][i]) flag2 = false;
         }
         if (!t[i][4-i]) flag3 = false;
-        if (!t[4-i][i]) flag4 = false;
+        if (!t[i][i]) flag4 = false;
 
         if (flag1) cnt++;
         if (flag2) cnt++;
