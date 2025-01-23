@@ -51,18 +51,19 @@ void INPUT(){
     }
     
     int ans = 0;
-    for (int i=1; i<101; i++){
-        for (int j=1; j<101; j++){
-            if (table[i][j] == false && table[i][j+1] == 1) ans++;
-            if (table[i][j] == false && table[i][j-1] == 1) ans++;
+    for (int i=0; i<102; i++){
+        for (int j=0; j<102; j++){
+            if (table[i][j] == false && j+1 < 102 && table[i][j+1] == 1) ans++;
+            if (table[i][j] == false && j-1 > -1 && table[i][j-1] == 1) ans++;
         }
     }
-    for (int i=1; i<101; i++){
-        for (int j=1; j<101; j++){
-            if (table[i][j] == false && table[i+1][j] == 1) ans++;
-            if (table[i][j] == false && table[i-1][j] == 1) ans++;
+    for (int i=0; i<102; i++){
+        for (int j=0; j<102; j++){
+            if (table[i][j] == false && i+1 < 102 && table[i+1][j] == 1) ans++;
+            if (table[i][j] == false && i - 1 > -1 && table[i-1][j] == 1) ans++;
         }
     }
+    // printTable();
     cout << ans << endl;
 
     for (int i=0; i<102; i++){
