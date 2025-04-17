@@ -1,0 +1,1 @@
+{"name":"Local: bj1350","url":"/Users/soonkwan/soonkwan/coding_practice/bj1350.cpp","tests":[{"id":1744898163032,"input":"1\n600\n512","output":"1024"},{"id":1744898171648,"input":"5\n16 32 128 128 0\n32768","output":"131072"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj1350.cpp","group":"local","local":true}
