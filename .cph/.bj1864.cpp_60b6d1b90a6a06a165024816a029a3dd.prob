@@ -1,0 +1,1 @@
+{"name":"Local: bj1864","url":"/Users/soonkwan/soonkwan/coding_practice/bj1864.cpp","tests":[{"id":1745934657493,"input":"(@&\n?/--\n/(\\\n?\n#","output":"158\n1984\n-47\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj1864.cpp","group":"local","local":true}
