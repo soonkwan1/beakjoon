@@ -1,0 +1,1 @@
+{"name":"Local: bj2966","url":"/Users/soonkwan/soonkwan/coding_practice/bj2966.cpp","tests":[{"id":1746108615653,"input":"9\nAAAABBBBB","output":"4\nAdrian\nBruno\nGoran"},{"id":1746108694418,"input":"5\nBAACC","output":"3\nBruno"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj2966.cpp","group":"local","local":true}
