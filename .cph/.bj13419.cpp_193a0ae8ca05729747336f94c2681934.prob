@@ -1,0 +1,1 @@
+{"name":"Local: bj13419","url":"/Users/soonkwan/soonkwan/coding_practice/bj13419.cpp","tests":[{"id":1748959463494,"input":"4\nABC\nABCFXZ\nK\nDY","output":"ACB\nBAC\nACX\nBFZ\nK\nK\nD\nY"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj13419.cpp","group":"local","local":true}
