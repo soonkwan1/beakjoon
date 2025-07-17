@@ -16,7 +16,7 @@ using namespace std;
 
 int n;
 int** t;
-int ans[3];
+int ans[4];
 void getTable(){
     t = new int*[n];
     for (int i=0; i<n; i++){
@@ -30,20 +30,41 @@ void freeTable(){
     for (int i=0; i<n; i++) delete[] t[i];
     delete[] t;
 }
-void regress(int x, int y, int k){
+int regress(int x, int y, int k){
     if (k == 1){
-        ans[t[x][y] + 1]++;
-        return;
+        return t[x][y];
     }
 
+    int tmp[4] = {0, 0, 0, 0};
+    for (int i=x; i<x+k; i+=k/3){
+        for (int j=y; j<y+k; j+=k/3){
+            int ret = regress(i, j, k / 3) + 1;
+            // cout << ret << " ";
+            tmp[ret]++;
+        }
+    }
+
+    if (tmp[0] == 9) return -1;
+    else if (tmp[1] == 9) return 0;
+    else if (tmp[2] == 9) return 1;
     
+    for (int i=0; i<3; i++){
+        ans[i] += tmp[i];
+    }
+    return 2;
 }
 void INPUT(){
     cin >> n;
-    fill_n(ans, 3, 0);
+    for (int i=0; i<3; i++){
+        ans[i] = 0;
+    }
     getTable();
 
-
+    int k = regress(0, 0, n) + 1;
+    if (k != 3) ans[k]++;
+    for (int i=0; i<3; i++){
+        cout << ans[i] << endl;
+    }
 
     freeTable();
 }
