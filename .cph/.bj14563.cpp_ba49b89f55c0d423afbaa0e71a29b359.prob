@@ -1,0 +1,1 @@
+{"name":"Local: bj14563","url":"/Users/soonkwan/soonkwan/coding_practice/bj14563.cpp","tests":[{"id":1753702621633,"input":"3\n28 21 36","output":"Perfect\nDeficient\nAbundant"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj14563.cpp","group":"local","local":true}
