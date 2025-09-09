@@ -15,7 +15,11 @@
 using namespace std;
 
 void INPUT(){
+    int k, n, m; cin >> n >> m >> k;
+    if (k == n) cout << m * k << endl;
+    else cout << m * (k + 1) << endl;
     
+
 }
 void SOLUTION(){
 
