@@ -1,0 +1,1 @@
+{"name":"Local: bj13420","url":"/Users/soonkwan/soonkwan/coding_practice/bj13420.cpp","tests":[{"id":1760190983098,"input":"4\n3 * 2 = 6\n11 + 11 = 11\n7 - 9 = -2\n3 * 0 = 0","output":"correct\nwrong answer\ncorrect\ncorrect"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj13420.cpp","group":"local","local":true}
