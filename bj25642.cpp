@@ -18,11 +18,11 @@ void INPUT(){
     int a, b; cin >> a >> b;
     int state = 0;
     while (true){
-        if (a > 5){
+        if (a >= 5){
             cout << "yj" << endl;
             break;
         }
-        else if (b > 5){
+        else if (b >= 5){
             cout << "yt" << endl;
             break;
         }
