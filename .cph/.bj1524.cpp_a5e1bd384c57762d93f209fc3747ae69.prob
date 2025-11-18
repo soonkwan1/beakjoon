@@ -1,0 +1,1 @@
+{"name":"Local: bj1524","url":"/Users/soonkwan/soonkwan/coding_practice/bj1524.cpp","tests":[{"id":1763472642245,"input":"2\n\n1 1\n1\n1\n\n3 2\n1 3 2\n5 5","output":"S\nB"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj1524.cpp","group":"local","local":true}
