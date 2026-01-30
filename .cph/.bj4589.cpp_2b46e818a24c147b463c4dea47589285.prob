@@ -1,0 +1,1 @@
+{"name":"Local: bj4589","url":"/Users/soonkwan/soonkwan/coding_practice/bj4589.cpp","tests":[{"id":1769768518841,"input":"3\n40 62 77\n88 62 77\n91 33 18","output":"Gnomes:\nOrdered\nUnordered\nOrdered"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj4589.cpp","group":"local","local":true}
