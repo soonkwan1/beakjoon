@@ -1,0 +1,1 @@
+{"name":"Local: bj5357","url":"/Users/soonkwan/soonkwan/coding_practice/bj5357.cpp","tests":[{"id":1770040870861,"input":"3\nABBBBAACC\nAAAAA\nABC","output":"ABAC\nA\nABC"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/soonkwan/soonkwan/coding_practice/bj5357.cpp","group":"local","local":true}
